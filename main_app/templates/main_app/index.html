@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Wish List Items</h1>
+
+    <form action="{% url 'list_create' %}" method="POST">
+        {% csrf_token %}
+        <input name="list_text">
+        <button type="submit">ADD TO WISHLIST</button>
+    </form>
+</body>
+</html>
