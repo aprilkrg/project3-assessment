@@ -6,6 +6,6 @@ urlpatterns = [
     # path('add/', views.AddWish.as_view(), name='list'),
 
     path('', views.index, name='index'),
-    path('add/', views.item_create, name='item_create'),
-
+    path('add/', views.ItemCreate.as_view(), name='item_create'),
+    path('delete/<int:item_id>', views.item_delete, name='item_delete'),
 ]

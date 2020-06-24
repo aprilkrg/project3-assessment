@@ -2,17 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import List, Item
 
-# from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView
 
-# class ListCreate(CreateView):
-#     model = List
-#     fields = ['list_text']
-
-#     def form_valid(self, form):
-#         # Assign the logged in user (self.request.user)
-#         form.instance.user = self.request.user
-#         # Let the CreateView do its usual
-#         return super().form_valid(form)
+class ItemCreate(CreateView):
+    model = Item
+    fields = ['item_text']
+    success_url = '/'
 
 # class AddWish(CreateView):
 #     model = List
@@ -24,7 +19,11 @@ def index(request):
     })
 
 def item_create(request):
-    # return HttpResponse('hellooooooo world')
-    # Item.objects.create(item_text=request.POST['item_text'])
+    print(request.POST)
+    Item.objects.create(request.POST)
     return render(request, 'item_create.html')
-    # return redirect('index')
+
+def item_delete(request, item_id):
+    Item.objects.filter(id=item_id).delete()
+    return redirect('index')
+    

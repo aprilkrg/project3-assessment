@@ -9,9 +9,11 @@
     <h1>Add Wish Item</h1>
     <hr>
     <p>Description: </p>
-    <form action="{% url 'index' %}" method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
-        <input type="text" name="item_text" id="">
+<table>
+    {{ form.as_table }}
+</table>
         <input type="submit" value="Add Item">
     </form>
 </body>
